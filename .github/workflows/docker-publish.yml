@@ -11,7 +11,8 @@ on:
 
 env:
   # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
+  REGISTRY_GHCR: ghcr.io
+  REGISTRY_QUAY: quay.io
   IMAGE_NAME: nexomis/r
 
 jobs:
@@ -29,19 +30,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Log into registry ${{ env.REGISTRY }}
+      - name: Log into GitHub Container Registry ${{ env.REGISTRY_GHCR }}
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.REGISTRY_GHCR }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Log into Quay.io
+      - name: Log into Quay.io ${{ env.REGISTRY_QUAY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY_QUAY }}
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
 
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: |
+            ${{ env.REGISTRY_GHCR }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY_QUAY }}/${{ env.IMAGE_NAME }}
           flavor: |
             latest=false
             prefix=
