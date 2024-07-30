@@ -3,7 +3,7 @@ ARG BIOC_VERSION
 
 FROM ubuntu:jammy
 
-ENV R_VERSION=${R_VERSION:-4.4.0}
+ENV R_VERSION=${R_VERSION:-4.4.1}
 ENV BIOC_VERSION=${BIOC_VERSION:-3.19}
 
 # Install a specific version of using posit release of gdebi packages.
