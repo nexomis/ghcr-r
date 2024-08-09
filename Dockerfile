@@ -1,9 +1,9 @@
-ARG R_VERSION
-ARG BIOC_VERSION
 
 FROM ubuntu:jammy
 
+ARG R_VERSION
 ENV R_VERSION=${R_VERSION}
+ARG BIOC_VERSION
 ENV BIOC_VERSION=${BIOC_VERSION}
 
 # Install a specific version of using posit release of gdebi packages.
