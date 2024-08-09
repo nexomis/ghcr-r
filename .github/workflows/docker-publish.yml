@@ -77,6 +77,9 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          build-args: | 
+            R_VERSION=${{ matrix.R_VERSION }}
+            BIOC_VERSION=${{ matrix.BIOC_VERSION }}
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}

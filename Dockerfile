@@ -3,8 +3,8 @@ ARG BIOC_VERSION
 
 FROM ubuntu:jammy
 
-ENV R_VERSION=${R_VERSION:-4.4.1}
-ENV BIOC_VERSION=${BIOC_VERSION:-3.19}
+ENV R_VERSION=${R_VERSION}
+ENV BIOC_VERSION=${BIOC_VERSION}
 
 # Install a specific version of using posit release of gdebi packages.
 RUN export DEBIAN_FRONTEND=noninteractive \ 
