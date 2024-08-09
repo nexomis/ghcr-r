@@ -70,7 +70,6 @@ jobs:
             prefix=
             suffix=
           tags: |
-            type=ref,event=tag
             type=raw,value=${{ matrix.R_VERSION }}-${{ github.ref_name }}
 
       - name: Build and push Docker image
