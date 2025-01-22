@@ -1,5 +1,5 @@
 
-FROM ubuntu:jammy
+FROM ubuntu:noble
 
 ARG R_VERSION
 ENV R_VERSION=${R_VERSION}
