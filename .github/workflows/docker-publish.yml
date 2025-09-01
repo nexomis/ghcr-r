@@ -23,10 +23,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - R_VERSION: '4.4.2'
+          - R_VERSION: '4.5.1'
+            BIOC_VERSION: '3.21'
+          - R_VERSION: '4.4.3'
             BIOC_VERSION: '3.20'
-          - R_VERSION: '4.3.3'
-            BIOC_VERSION: '3.18'
 
     permissions:
       contents: read

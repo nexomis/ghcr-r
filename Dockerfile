@@ -1,5 +1,5 @@
 
-FROM ubuntu:noble
+FROM ubuntu:noble-20250716
 
 ARG R_VERSION
 ENV R_VERSION=${R_VERSION}
